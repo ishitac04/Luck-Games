@@ -1,3 +1,4 @@
+score=0
 while True:
      
     print()
@@ -18,6 +19,7 @@ while True:
 
         if choice == number:
             print("You win! ")
+            return 1
         else:
             print("You lose :(")
         print()
@@ -30,7 +32,7 @@ while True:
         sign="hello"
 
         number=random.randint(1,3)
-        choice=input("Enter your chosen sign (rock, paper or scissor): ")
+        choice=input("Enter your chosen sign (rock, paper or scissors): ")
         if number==1:
             sign="rock"
         elif number==2:
@@ -51,22 +53,51 @@ while True:
             print("The computer wins!")
         elif choice.lower() == "rock" and sign=="scissors":
             print("You win!")
+            return 1
         elif choice.lower() == "paper" and sign=="rock":
             print("You win!")
+            return 1
         elif choice.lower() == "scissors" and sign=="paper":
             print("You win!")
+            return 1
         else:
             print("Its a tie!")
         print()
+    
+    def flipacoin():
+        print()
+        print("In this game, you will guess whether the coin lands on heads or tails. If you are right, you win! ")
+        import random
+        number=random.randint(1,2)
+        if number==1:
+            coin="Heads"
+        else:
+            coin="Tails"
+        choice=input("Enter your guess: ")
+        if choice.lower()=="heads" and number==1:
+            print("You win!")
+            return 1
+        elif choice.lower()=="tails" and number == 2:
+            print("You win!")
+            return 1
+        else:
+            print("You lose")
 
-    print("GAMES:")
+    print("LUCK GAMES:")
     print("1 - Guess The Number")
     print("2 - Rock Paper Scissors")
+    print("3 - Flip a Coin")
     choice=input("Choose which game you want to play! ")
     if choice=="1":
-        pickanumber()
+        increase=pickanumber()
     elif choice=="2":
-        rockpaperscissors()
+        increase=rockpaperscissors()
+    elif choice=="3":
+        increase=flipacoin()
+    
+    if increase==1:
+            score=score+1
+    print("Your current score is "+str(score)+".")
     again=input("Do you want to play again? ")
     if again.lower()=="yes":
         pass
